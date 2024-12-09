@@ -7,7 +7,10 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const html = pug.renderFile('index.html.pug', {})
+// read versions from package.json
+const { versions } = JSON.parse(fs.readFileSync('./package.json'))
+
+const html = pug.renderFile('index.html.pug', { versions })
 
 const distDir = path.join(__dirname, 'dist')
 if (!fs.existsSync(distDir)) {
