@@ -4,7 +4,17 @@ html
   body
     h1 DSFR Documentation
     h2 Versions
-    ul
+    table
+      thead
+        tr
+          th Version
+          th Documentation
+          th Storybook
       each version in versions
-        li
-          a(href=`v${version}/example/index.html`) v#{version}
+        tr
+          th v#{version.number} :
+          td
+            a(href=`v${version.number}/example/index.html`) Documentation
+          td
+            if version.storybook
+              a(href=`v${version.number}/storybook/index.html`) Storybook
