@@ -15,9 +15,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    strategy:
-      matrix:
-        version: ["1.12.1", "1.13.0"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,13 +23,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '23'
-      - name: Install @gouvfr/dsfr
-        run: ./fetch_all_versions_files.sh
+      - run: ./fetch_all_versions_files.sh
       - run: node build_index.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: 'dist/'
       - name: Deploy to GitHub Pages
         id: deployment
