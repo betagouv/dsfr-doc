@@ -1,0 +1,25 @@
+{
+  "name": "dsfr-doc",
+  "version": "0.0.1",
+  "description": "Documentation non-officielle pour le Design Système de l’État Français ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betagouv/dsfr-doc.git"
+  },
+  "keywords": [
+    "DSFR"
+  ],
+  "author": "Adrien Di Pasquale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/betagouv/dsfr-doc/issues"
+  },
+  "homepage": "https://github.com/betagouv/dsfr-doc#readme",
+  "dependencies": {
+    "@gouvfr/dsfr": "^1.13.0"
+  }
+}
