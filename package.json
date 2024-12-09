@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "Documentation non-officielle pour le Design Système de l’État Français ",
   "main": "index.js",
-  "scripts": {
-    "build": "node build.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/betagouv/dsfr-doc.git"

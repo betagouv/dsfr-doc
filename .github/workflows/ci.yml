@@ -12,6 +12,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         version: ["1.12.1", "1.13.0"]
@@ -24,41 +27,8 @@ jobs:
         with:
           node-version: '23'
       - name: Install @gouvfr/dsfr
-        run: |
-          mkdir -p dist/v${{ matrix.version }}
-          npm install @gouvfr/dsfr@${{ matrix.version }}
-          cp -r node_modules/@gouvfr/dsfr/dist dist/v${{ matrix.version }}/
-          cp -r node_modules/@gouvfr/dsfr/example dist/v${{ matrix.version }}/
-          # test if storybook exists
-          if [ -d "node_modules/@gouvfr/dsfr/storybook" ]; then
-            cp -r node_modules/@gouvfr/dsfr/storybook dist/v${{ matrix.version }}/
-          fi
-          cp -r node_modules/@gouvfr/dsfr/doc dist/v${{ matrix.version }}/
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist_v${{ matrix.version }}
-          path: dist/
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '23'
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: dist
-          pattern: dist_v*
-          merge-multiple: true
-      - run: node build
+        run: ./fetch_all_versions_files.sh
+      - run: node build_index.js
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
