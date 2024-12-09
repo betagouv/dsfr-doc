@@ -2,7 +2,10 @@
   "name": "dsfr-doc",
   "version": "0.0.1",
   "description": "Documentation non-officielle pour le Design Système de l’État Français ",
-  "main": "index.js",
+  "versions": [
+    "1.12.1",
+    "1.13.0"
+  ],
   "scripts": {},
   "repository": {
     "type": "git",
