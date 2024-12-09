@@ -18,3 +18,7 @@ html
           td
             if version.storybook
               a(href=`v${version.number}/storybook/index.html`) Storybook
+    footer
+      p Site généré le #{new Date().toLocaleDateString('fr-FR')}
+      p Le code source de ce site est disponible sur
+        a(href="https://github.com/betagouv/dsfr-doc") GitHub
