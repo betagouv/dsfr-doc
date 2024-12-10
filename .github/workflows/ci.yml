@@ -23,8 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '23'
-      - run: ./fetch_all_versions_files.sh
-      - run: node build_index.js
+      - run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

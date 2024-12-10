@@ -23,7 +23,13 @@
       "storybook": true
     }
   ],
-  "scripts": {},
+  "scripts": {
+    "buildVersions": "./scripts/fetch_all_versions_files.sh",
+    "buildIndex": "node scripts/buildIndex.js",
+    "build": "npm run buildVersions && npm run buildIndex",
+    "serve": "http-server --port 0 dist",
+    "start": "npm run build && npm run serve"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/betagouv/dsfr-doc.git"
@@ -39,6 +45,9 @@
   "homepage": "https://github.com/betagouv/dsfr-doc#readme",
   "dependencies": {
     "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "http-server": "^14.1"
   },
   "type": "module"
 }

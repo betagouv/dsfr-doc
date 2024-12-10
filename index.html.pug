@@ -1,24 +1,45 @@
 html
   head
     title DSFR Documentation
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(rel="stylesheet" href=`v${mostRecentVersion.number}/dist/dsfr.main.min.css`)
   body
-    h1 DSFR Documentation
-    h2 Versions
-    table
-      thead
-        tr
-          th Version
-          th Documentation
-          th Storybook
-      each version in versions
-        tr
-          th v#{version.number} :
-          td
-            a(href=`v${version.number}/example/index.html`) Documentation
-          td
-            if version.storybook
-              a(href=`v${version.number}/storybook/index.html`) Storybook
-    footer
-      p Site généré le #{new Date().toLocaleDateString('fr-FR')}
-      p Le code source de ce site est disponible sur
-        a(href="https://github.com/betagouv/dsfr-doc") GitHub
+    header.fr-header(role="banner")
+      .fr-header__body
+        .fr-container
+          .fr-header__body-row
+            .fr-header__brand.fr-enlarge-link
+              .fr-header__service
+                a(href="/" title="Accueil - DSFR Doc")
+                  p.fr-header__service-title
+                    | DSFR-doc
+                p.fr-header__service-tagline Documentation non-officielle du DSFR
+    .fr-container
+      .fr-table
+        .fr-table__wrapper
+          .fr-table__container
+            .fr-table__content
+              table
+                caption Versions du DSFR
+                thead
+                  tr
+                    th Version
+                    th Documentation
+                    th Storybook
+                each version in versions
+                  tr
+                    th v#{version.number} :
+                    td
+                      a(href=`v${version.number}/example/index.html`) Documentation
+                    td
+                      if version.storybook
+                        a(href=`v${version.number}/storybook/index.html`) Storybook
+      footer.fr-footer
+        .fr-container
+          .fr-footer__bottom
+            .fr-footer__bottom-copy
+              p Site généré le #{new Date().toLocaleDateString('fr-FR')}
+              p
+                | Le code source de ce site est disponible sur&nbsp;
+                a(href="https://github.com/betagouv/dsfr-doc") GitHub
