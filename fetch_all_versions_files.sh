@@ -7,7 +7,7 @@ for version in $versions; do
   has_storybook=$(echo $version | jq -r '.storybook')
 
   printf "\nFetching files for version $version_number - Storybook: $has_storybook\n"
-  mkdir -p "dist/v$version"
+  mkdir -p "dist/v$version_number"
   npm install --no-save "@gouvfr/dsfr@$version_number"
 
   cp -r "node_modules/@gouvfr/dsfr/dist" "dist/v$version_number/"
